@@ -152,6 +152,7 @@ def appendIntervalIfValid(index):
 
 def signal_handler(sig, frame):
     print('\nYou pressed Ctrl+C!' + '\n' + 'Shutting down....')
+    time.sleep(2) 
     sys.exit(0)
 
 #Reads intervals from user inputs
@@ -179,6 +180,7 @@ def read():
       for i in range(0, intervalsCount):
         appendIntervalIfValid(int(i+1))
         
+#The Merging algorithm it compares the last number of before with first number of following        
 def mergeAlgorithm(intervalsToMerge, start_index = 0):
   offset = 0
   endOffset = 0
