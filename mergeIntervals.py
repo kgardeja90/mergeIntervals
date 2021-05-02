@@ -47,7 +47,7 @@ def getOffsetForPoint(interval, index, offset, resetindex, errorDict, errorArgs)
 
 #Handles index errors
 def indexErrorHandler(resetindex, errorArgs, errorDict , error):
-  addToDict(resetindex, ' Final sign', 'was forgotten!' + 'Should have been "]"', errorDict)
+  addToDict(resetindex, ' Final sign', 'was forgotten!' + ' Should have been "]"', errorDict)
   addToListIfNotExisting(resetindex, errorArgs)
   errorHandler(error, errorArgs, errorDict)
   appendIntervalIfValid(resetindex)
@@ -87,59 +87,64 @@ def validateInterval(interval, index):
   errorArgs = []
   print('Interval length: ' + str(len(interval)))
   print ('Interval', index, ': ', interval)
-  for z in range(0, len(interval)):
-    if z == 0:
-      if interval[z] != '[':
-        error = True
-        addToDict(index, ' First Sign', 'was not "["!', errorDict)
-        addToListIfNotExisting(index, errorArgs)
-    if z == 1:
-      try:
-        type(int(interval[z]))
-        offset = getOffsetForPoint(interval, z, offset, index, errorDict, errorArgs)
-        start = getStartPoint(interval, z, offset)
-      except ValueError:
-        error = True
-        addToDict(index, ' Starting Point', 'was not a Number!', errorDict)
-        addToListIfNotExisting(index, errorArgs)
-    if (z + offset) == 2 + offset:
-      try:
-        if interval[z + offset] != ',':
+  if interval:
+    for z in range(0, len(interval)):
+      if z == 0:
+        if interval[z] != '[':
           error = True
-          addToDict(index, ' Second Sign', 'was not ","!', errorDict)
+          addToDict(index, ' First Sign', 'was not "["!', errorDict)
           addToListIfNotExisting(index, errorArgs)
-      except IndexError:
-        return bool(indexErrorHandler(index, errorArgs, errorDict , True))  
-    if (z + offset) == 3 + offset:
-      try:
-        if interval[z + offset] != ' ':
+      if z == 1 or len(interval) < 2:     
+        try:
+          type(int(interval[z]))
+          offset = getOffsetForPoint(interval, z, offset, index, errorDict, errorArgs)
+          start = getStartPoint(interval, z, offset)
+        except ValueError:
           error = True
-          addToDict(index, ' Third Sign', 'was not " "!', errorDict)
+          addToDict(index, ' Starting Point', 'was not a Number!', errorDict)
           addToListIfNotExisting(index, errorArgs)
-      except IndexError:
-        return bool(indexErrorHandler(index, errorArgs, errorDict , True))     
-    if (z + offset) == 4 + offset:        
-      try:
-        type(int(interval[z + offset]))
-        endOffset = getOffsetForPoint(interval, z, offset, index, errorDict, errorArgs)
-        #Minus 2 to set start digit for end point correctly
-        end = getEndPoint(interval, (z+offset))
-        if end <= start:
+      if (z + offset) == 2 + offset or len(interval) < 3 + offset:
+        try:
+          if interval[z + offset] != ',':
+            error = True
+            addToDict(index, ' Second Sign', 'was not ","!', errorDict)
+            addToListIfNotExisting(index, errorArgs)
+        except IndexError:
+          return bool(indexErrorHandler(index, errorArgs, errorDict , True))  
+      if (z + offset) == 3 + offset or len(interval) < 4 + offset:
+        try:
+          if interval[z + offset] != ' ':
+            error = True
+            addToDict(index, ' Third Sign', 'was not " "!', errorDict)
+            addToListIfNotExisting(index, errorArgs)
+        except IndexError:
+          return bool(indexErrorHandler(index, errorArgs, errorDict , True))     
+      if (z + offset) == 4 + offset or len(interval) < 5 + offset:        
+        try:
+          type(int(interval[z + offset]))
+          endOffset = getOffsetForPoint(interval, z, offset, index, errorDict, errorArgs)
+          end = getEndPoint(interval, (z+offset))
+          if end <= start:
+            error = True
+            addToDict(index, ' EndPoint', 'was smaller or equal as StartPoint "]"!', errorDict)
+        except ValueError:
           error = True
-          addToDict(index, ' EndPoint', 'was smaller or equal as StartPoint "]"!', errorDict)
-      except ValueError:
-        error = True
-        addToDict(index, ' Ending Point', 'was not a Number!', errorDict)
-        addToListIfNotExisting(index, errorArgs)
-    if (z + endOffset) == 5 + endOffset:
-      try:
-        if interval[z + endOffset] != ']':      
-          error = True
-          addToDict(index, ' Last Sign', 'was not "]"!', errorDict)
+          addToDict(index, ' Ending Point', 'was not a Number!', errorDict)
           addToListIfNotExisting(index, errorArgs)
-      except IndexError:
-        return bool(indexErrorHandler(index, errorArgs, errorDict , True))      
-  return errorHandler(error, errorArgs, errorDict)
+      if (z + endOffset) == 5 + endOffset or len(interval) < 6 + offset:
+        try:
+          if interval[z + endOffset] != ']':      
+            error = True
+            addToDict(index, ' Last Sign', 'was not "]"!', errorDict)
+            addToListIfNotExisting(index, errorArgs)
+        except IndexError:
+          return bool(indexErrorHandler(index, errorArgs, errorDict , True))
+    return errorHandler(error, errorArgs, errorDict)
+  else:
+    error = True
+    addToDict(index, ' No Interval', 'was entered!', errorDict)
+    addToListIfNotExisting(index, errorArgs)
+    return errorHandler(error, errorArgs, errorDict)    
 
 #Appends intervals as list elements when they are valid
 def appendIntervalIfValid(index):

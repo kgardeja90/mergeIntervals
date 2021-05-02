@@ -1,8 +1,8 @@
 ([('mergeIntervals.exe',
-   'C:\\Users\\kgard\\projects\\python\\mergeInterval\\build\\mergeIntervals\\mergeIntervals.exe',
+   'C:\\Users\\kgard\\Projects\\python\\mergeInterval\\build\\mergeIntervals\\mergeIntervals.exe',
    'EXECUTABLE'),
   ('mergeIntervals.exe.manifest',
-   'C:\\Users\\kgard\\projects\\python\\mergeInterval\\build\\mergeIntervals\\mergeIntervals.exe.manifest',
+   'C:\\Users\\kgard\\Projects\\python\\mergeInterval\\build\\mergeIntervals\\mergeIntervals.exe.manifest',
    'BINARY'),
   ('VCRUNTIME140.dll',
    'c:\\users\\kgard\\appdata\\local\\programs\\python\\python39\\VCRUNTIME140.dll',
@@ -62,5 +62,5 @@
    'c:\\users\\kgard\\appdata\\local\\programs\\python\\python39\\DLLs\\libffi-7.dll',
    'BINARY'),
   ('base_library.zip',
-   'C:\\Users\\kgard\\projects\\python\\mergeInterval\\build\\mergeIntervals\\base_library.zip',
+   'C:\\Users\\kgard\\Projects\\python\\mergeInterval\\build\\mergeIntervals\\base_library.zip',
    'DATA')],)

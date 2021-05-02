@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['mergeIntervals.py'],
-             pathex=['C:\\Users\\kgard\\projects\\python\\mergeInterval'],
+             pathex=['C:\\Users\\kgard\\Projects\\python\\mergeInterval'],
              binaries=[],
              datas=[],
              hiddenimports=[],
