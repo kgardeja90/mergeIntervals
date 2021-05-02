@@ -1,0 +1,76 @@
+py -3 -m memory_profiler mergeIntervals.py
+
+How many Intervalls should be merged if possible:
+A maximum of 8 is possible
+8
+
+Please Enter the 1. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[1, 9]
+Interval length: 6
+Interval 1 :  [1, 9]
+
+Please Enter the 2. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[3, 4]
+Interval length: 6
+Interval 2 :  [3, 4]
+
+Please Enter the 3. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[128, 258]
+Interval length: 10
+Interval 3 :  [128, 258]
+
+Please Enter the 4. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[65, 134]
+Interval length: 9
+Interval 4 :  [65, 134]
+
+Please Enter the 5. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[14, 26]
+Interval length: 8
+Interval 5 :  [14, 26]
+
+Please Enter the 6. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[13, 17]
+Interval length: 8
+Interval 6 :  [13, 17]
+
+Please Enter the 7. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[29, 37]
+Interval length: 8
+Interval 7 :  [29, 37]
+
+Please Enter the 8. interval
+The format would be [<starting_point>,<space><ending_point>]
+For example [1, 2]
+[1, 111]
+Interval length: 8
+Interval 8 :  [1, 111]
+Merged:
+
+[[1, 111], [128, 258]]
+Filename: mergeIntervals.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   204   20.711 MiB   20.711 MiB           1   @profile
+   205                                         def main():
+   206   20.730 MiB    0.020 MiB           1     signal.signal(signal.SIGINT, signal_handler)
+   207   20.746 MiB    0.016 MiB           1     read()
+   208   20.746 MiB    0.000 MiB           1     intervalsToMerge.sort()
+   209   20.746 MiB    0.000 MiB           1     print('Merged: \n')
+   210   20.746 MiB    0.000 MiB           1     print(str(mergeAlgorithm(convert())))
+   211   20.750 MiB    0.004 MiB           1     time.sleep(5)
