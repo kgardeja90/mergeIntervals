@@ -156,7 +156,7 @@ def signal_handler(sig, frame):
 
 #Reads intervals from user inputs
 def read():
-  print('This is a application to merge Intervals in the style of [1, 5].')
+  print('This is an application to merge Intervals in the style of [1, 5].')
   print('First you have to choose how many intervals you want to Merge (maximal 8) just enter a number and press enter.')
   print('Than you have to enter your intervals, just like the one before') 
   intervalsCount = None
@@ -204,7 +204,6 @@ def convert():
   return convertedList
   
 #Start the application
-@profile  
 def main():
   signal.signal(signal.SIGINT, signal_handler)  
   read()
