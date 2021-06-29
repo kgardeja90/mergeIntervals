@@ -1,6 +1,6 @@
 Bezüglich der Aufgabe.
 
-Ich habe ungefähr 6 Stunden benötigt. Bezüglich der Laufzeit lässt sich feststellen, 
+Ich habe ungefähr 10 Stunden plus eine Vorbereitung benötigt. Bezüglich der Laufzeit lässt sich feststellen, 
 dass nahezu alle Operationen in linearer Zeit ablaufen, 
 abgesehen von dem Aufruf .sort() (zeile 205 in der main() Methode). 
 Dieser unterläuft eine Laufzeit mit einer oberen Schranke von O(n*log(n)). 
